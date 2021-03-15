@@ -1,0 +1,26 @@
+{
+  "name": "my-node-docs",
+  "version": "1.0.0",
+  "repository": "https://github.com/RallerenP/my-node-docs.git",
+  "author": "Rasmus Povlsen <git@rpovlsen.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn build:css && node src/app.js",
+    "start:dev": "nodemon --watch src --watch public --ignore public/css/styles.css -e js,html,css --exec \"cross-env PORT=8080 yarn start\"",
+    "build:css": "postcss public/css/tailwind.css -o public/css/styles.css"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "sequelize": "^6.5.1",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.2",
+    "autoprefixer": "^10.2.5",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.7",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.3"
+  }
+}
