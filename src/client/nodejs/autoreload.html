@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <title>NodeJS | Autoreload</title>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-monaco-editor@1/index.js"></script>
+
+    <script src="https://kit.fontawesome.com/7bc581f92a.js" crossorigin="anonymous"></script>
+    <script src="/dependencies/prism.js"></script>
+    <script type="module" src="/js/sidebar.js"></script>
+</head>
+<body class="flex w-screen h-screen flex-col overflow-y-hidden">
+<div id="appbar" class="flex bg-pink-400 h-16 flex-shrink-0">
+
+</div>
+<div class="flex h-full flex-grow bg-green-400">
+    <nav id="sidebar">
+        <a href="/" class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    Home
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fas fa-home"></i>
+                </div>
+            </div>
+
+        </a>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    General JavaScript
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-js"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/general-javascript/data-types" class="flex-center flex-grow">Data Types</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    NodeJS
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-node"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/what-is-nodejs" class="flex-center flex-grow">What is NodeJS?</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/package-json" class="flex-center flex-grow">package.json</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/autoreload" class="flex-center flex-grow">Autoreload</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/env-var" class="flex-center flex-grow">Environment Variables</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/rest-api" class="flex-center flex-grow">REST API</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    NPM
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-npm"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/npm/npm" class="flex-center flex-grow">NPM</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/npm/express" class="flex-center flex-grow">Express</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="flex-grow h-full overflow-y-scroll">
+        <div id="content" class="w-full m-8">
+            <h1>
+                Autoreload
+            </h1>
+            <br />
+            <br />
+            <p>
+                Manually stopping and starting your app everytime the source changes can be quite a bother.
+                <br />
+                <br />
+                Luckily, there are tools that will watch your files for changes, and reload your app.
+            </p>
+            <h3>Nodemon</h3>
+            <p>
+                The most popular tool for accomplishing this is <a href="https://nodemon.io">nodemon</a>.
+                <br />
+                <br />
+                Nodemon is an NPM package, that is very simple to setup and use. Nodemon can be installed
+                both globally and locally for the project. The simplest is to install globally
+                <br />
+                <br />
+                <i>Terminal</i>
+            <pre class="language-none">
+    <code class="">
+        npm install -g nodemon
+    </code></pre>
+                <br />
+                <br />
+                From there it's easy to monitor a single file, and reload it upon changes
+                <br />
+                <br />
+                <i>Terminal</i>
+            <pre class="language-none">
+    <code class="">
+        nodemon [file]
+    </code></pre>
+                <br />
+                <br />
+                This will watch the single file, and rerun it with node every time
+                it changes.
+                <br />
+                <br />
+                Nodemon has many options though. For more advanced use it's best to
+                install locally as a dev-dependency
+
+                <br />
+                <br />
+                <i>Terminal</i>
+            <pre class="language-none">
+    <code class="">
+        npm install nodemon --save-dev
+    </code></pre>
+                <br />
+                <br />
+                and then use it as a script in package.json
+                <br />
+                <br />
+                <i>package.json</i>
+            <pre class="line-numbers language-json">
+    <code class="">{
+       "scripts": {
+            "dev": "nodemon [options] [file]"
+        }
+    }</code></pre>
+            <br />
+            <br />
+            For example, the dev script for this projects looks like this:
+            <br />
+            <br />
+            <i>package.json</i>
+            <pre class="line-numbers language-json">
+    <code class="">{
+       "script": {
+            nodemon --watch src --watch public --ignore public/css/styles.css -e js,html,css --exec \"cross-env PORT=8080 yarn start\""
+        }
+    }</code></pre>
+            <br />
+            <br />
+            Running <code class="language-none">npm run start:dev</code> will make nodemon watch the <code class="language-none">src</code> and <code class="language-none">public</code>
+            folder in my project, but only files ending with <code class="language-none">.js, .html, and .css</code>. Ignoring
+            an auto-generated file called styles.css.
+            <br />
+            <br />
+            Then it runs a tool called 'cross-env', which you can read about <a href="/nodejs/env-var">here</a>.
+            <br />
+            <br />
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

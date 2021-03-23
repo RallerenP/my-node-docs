@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <title>NodeJS | package.json</title>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-monaco-editor@1/index.js"></script>
+
+    <script src="https://kit.fontawesome.com/7bc581f92a.js" crossorigin="anonymous"></script>
+    <script src="/dependencies/prism.js"></script>
+    <script type="module" src="/js/sidebar.js"></script>
+</head>
+<body class="flex w-screen h-screen flex-col overflow-y-hidden">
+<div id="appbar" class="flex bg-pink-400 h-16 flex-shrink-0">
+
+</div>
+<div class="flex h-full flex-grow bg-green-400">
+    <nav id="sidebar">
+        <a href="/" class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    Home
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fas fa-home"></i>
+                </div>
+            </div>
+
+        </a>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    General JavaScript
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-js"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/general-javascript/data-types" class="flex-center flex-grow">Data Types</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    NodeJS
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-node"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/what-is-nodejs" class="flex-center flex-grow">What is NodeJS?</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/package-json" class="flex-center flex-grow">package.json</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/autoreload" class="flex-center flex-grow">Autoreload</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/env-var" class="flex-center flex-grow">Environment Variables</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/rest-api" class="flex-center flex-grow">REST API</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    NPM
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-npm"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/npm/npm" class="flex-center flex-grow">NPM</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/npm/express" class="flex-center flex-grow">Express</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="flex-grow h-full overflow-y-scroll">
+        <div id="content" class="w-full m-8">
+            <h1>
+                package.json
+            </h1>
+            <br />
+            <br />
+            <p>
+                The package.json file is a manifest for your project. It stores configuration and metadata,
+                and is used by <a href="/npm/npm">npm</a> to keep track of dependencies.
+                <br />
+                <br />
+            </p>
+            <h3>NPM</h3>
+            <p>
+                NPM uses the package.json to keep track of dependencies, and to run scripts.
+
+                For the simplest usage with NPM, all that is needed is a <code class="language-json">"dependencies"</code> field.
+                <br />
+                <br />
+                <i>package.json</i>
+                <pre class="line-numbers language-json">
+    <code class="">{
+       "dependencies": {
+            ...
+        }
+    }</code></pre>
+                <br />
+                <br />
+                The dependencies field carries keys for names of dependencies, and the values will the versions required.
+                <br />
+                <br />
+            <i>package.json</i>
+            <pre class="line-numbers language-json">
+    <code class="">{
+       "dependencies": {
+            "express": "^4.17.1"
+        }
+    }</code></pre>
+                <br />
+                <br />
+                This will ensure that the project requires a version of express higher than <code class="language-none">4.17.1</code>.
+                Running <code class="language-none">npm install</code>, will install all dependencies listed in the package.json
+                <br />
+                <br />
+                <a href="/npm/npm">Read more about package.json and NPM here</a>
+            </p>
+            <br />
+            <br />
+            <h3>Setup</h3>
+            <br />
+            <br />
+            <p>
+                While there are no strict requirements for a package.json (perhaps except dependencies), you'll often find the following:
+                <br>
+                <br>
+                <i>package.json</i>
+            <pre class="line-numbers language-json">
+    <code class="">{
+        "name": ...,
+        "version": ...,
+        "repository": ...,
+        "author": ...,
+        "license": ...,
+        "scripts": { ... }
+        "dependencies": { ... }
+        "devDependencies": { ... }
+    }</code></pre>
+            <br />
+            <br />
+            These fields are often present because they are generated when using <code class="language-none">npm init</code> to create the package.json
+            <br />
+            <br />
+            The package.json for this project was looks like this:
+            <i>package.json</i>
+            <pre class="line-numbers language-json">
+    <code class="">{
+          "name": "my-node-docs",
+          "version": "1.0.0",
+          "repository": "https://github.com/RallerenP/my-node-docs.git",
+          "author": "Rasmus Povlsen <git@rpovlsen.com>",
+          "license": "MIT",
+          "type": "module",
+          "scripts": {
+            "start": "node src/app.js",
+            "start:dev": "nodemon --watch src --watch public --ignore public/css/styles.css -e js,html,css --exec \"cross-env PORT=8080 yarn start\"",
+            "build:css": "postcss public/css/tailwind.css -o public/css/styles.css"
+          },
+          "dependencies": {
+            "cors": "^2.8.5",
+            "express": "^4.17.1"
+          },
+          "devDependencies": {
+            "@fullhuman/postcss-purgecss": "^4.0.2",
+            "autoprefixer": "^10.2.5",
+            "cross-env": "^7.0.3",
+            "nodemon": "^2.0.7",
+            "postcss-cli": "^8.3.1",
+            "tailwindcss": "^2.0.3"
+          }
+    }</code></pre>
+            <br />
+            <br />
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

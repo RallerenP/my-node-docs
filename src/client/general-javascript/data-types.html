@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <title>General JavaScript | Data Types</title>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-monaco-editor@1/index.js"></script>
+    <script src="https://kit.fontawesome.com/7bc581f92a.js" crossorigin="anonymous"></script>
+    <script src="/dependencies/prism.js"></script>
+    <script type="module" src="/js/sidebar.js"></script>
+    <link rel="stylesheet" href="/css/tailwind.css">
+</head>
+<body class="flex w-screen h-screen flex-col overflow-y-hidden">
+<div id="appbar" class="flex bg-pink-400 h-16 flex-shrink-0">
+
+</div>
+<div class="flex h-full flex-grow bg-green-400">
+    <nav id="sidebar">
+        <a href="/" class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    Home
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fas fa-home"></i>
+                </div>
+            </div>
+
+        </a>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    General JavaScript
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-js"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/general-javascript/data-types" class="flex-center flex-grow">Data Types</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    NodeJS
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-node"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/what-is-nodejs" class="flex-center flex-grow">What is NodeJS?</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/package-json" class="flex-center flex-grow">package.json</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/autoreload" class="flex-center flex-grow">Autoreload</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/env-var" class="flex-center flex-grow">Environment Variables</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/rest-api" class="flex-center flex-grow">REST API</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    NPM
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-npm"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/npm/npm" class="flex-center flex-grow">NPM</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/npm/express" class="flex-center flex-grow">Express</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="flex-grow h-full overflow-y-scroll">
+        <div id="content" class="m-8 w-full">
+            <h1>
+                Data Types
+            </h1>
+            <br />
+            <p>
+                JavaScript has inferred types and type-coercion, meaning you rarely explicitly define a datatype.
+                <br />
+                <pre class="bg-gray-800">
+    <code class="line-numbers language-javascript">
+    const foo = 6; // bar is inferred as a number.
+    const bar = "baz"; // baz is inferred as a string.
+    </code>
+                </pre>
+            </p>
+            <br />
+            <h3>Type Coercion</h3>
+            <br />
+            <p>
+                JavaScript will attempt to coerce data types to fit a context.
+                <pre class="bg-gray-800">
+    <code class="line-numbers language-javascript">
+    const foo = "6"; // foo is inferred as a string.
+    const bar = 3; // bar is inferred as a number.
+
+    const baz = foo + bar
+    // baz = foo + bar = "6" + 3 = "6" + "3" = "63"
+    // baz = "63"
+    </code>
+                </pre>
+                In this case, bar is coerced into the context of a string, and is treated as such. This can also go the other way,
+                so a string can become a number through type-coercion.
+                <br />
+                This might occasionally cause trouble though. <code class="language-javascript">"11" + 1 = 111</code>, while <code class="language-javascript">"11" - 1 = 10</code>
+                <br />
+                This happens because the <code>+</code> operator can be applied to a string as string concatenation, while the <code>-</code> operator can only be applied to numbers.
+            </p>
+            <br />
+            <h3>All Datatypes</h3>
+            <h4>Primitives:</h4>
+            <pre class="bg-gray-800">
+    <code class="line-numbers language-javascript">
+    const num_foo = 6; // number
+    const num_bar = 6.2; // number
+
+    const str = "3"; // string
+    const str_foo = '3'; // string
+
+    const bool = true; // string
+    let something; // undefined
+    </code>
+            </pre>
+            <br />
+            <h4>Complex:</h4>
+            <pre class="bg-gray-800">
+    <code class="line-numbers language-javascript">
+    const foo = {key: "object_value", bar: 21}; // Object
+    const bar = ["array_value", 2, false] // Object (Arrays are objects)
+    const baz = null; // Object (null is an object)
+    const qux = function() { }; // function
+    </code>
+            </pre>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <title>NodeJS | Rest API</title>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-monaco-editor@1/index.js"></script>
+
+    <script src="https://kit.fontawesome.com/7bc581f92a.js" crossorigin="anonymous"></script>
+    <script src="/dependencies/prism.js"></script>
+    <script type="module" src="/js/sidebar.js"></script>
+</head>
+<body class="flex w-screen h-screen flex-col overflow-y-hidden">
+<div id="appbar" class="flex bg-pink-400 h-16 flex-shrink-0">
+
+</div>
+<div class="flex h-full flex-grow bg-green-400">
+    <nav id="sidebar">
+        <a href="/" class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    Home
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fas fa-home"></i>
+                </div>
+            </div>
+
+        </a>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    General JavaScript
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-js"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/general-javascript/data-types" class="flex-center flex-grow">Data Types</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    NodeJS
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-node"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/what-is-nodejs" class="flex-center flex-grow">What is NodeJS?</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/package-json" class="flex-center flex-grow">package.json</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/autoreload" class="flex-center flex-grow">Autoreload</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/env-var" class="flex-center flex-grow">Environment Variables</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/nodejs/rest-api" class="flex-center flex-grow">REST API</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="hover:bg-blue-300 transition-color duration-100 h-16 w-full justify-center items-center flex cursor-pointer">
+                <div class="flex justify-center items-center flex-grow ml-4">
+                    NPM
+                </div>
+                <div class=" h-16 w-16 flex justify-center items-center">
+                    <i class="text-4xl fab fa-npm"></i>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/npm/npm" class="flex-center flex-grow">NPM</a>
+                </div>
+            </div>
+            <div>
+                <div class="hover:bg-blue-300 transition-color h-16 w-full ml-8 flex-center">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                    <a href="/npm/express" class="flex-center flex-grow">Express</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="flex-grow h-full overflow-y-scroll">
+        <div id="content" class="w-11/12 m-8 mx-auto box-border">
+            <h1>
+                REST API
+            </h1>
+            <br />
+            <br />
+            <p>
+                A REST API is a system where a server sends resources as objects to a client. It's practical
+                because this allows us to send only important information through HTTP, without
+                any HTML or other difficult-to-parse information.
+                <br />
+                <br />
+                This allows the client to be more flexible and more lightweight, because you don't have to
+                re-download a lot of data as overhead for just a single resource.
+                <br />
+                <br />
+                This page shows how to implement a simple in-memory CRUD REST API in <a href="/npm/express">Express</a>
+                <br />
+                <br />
+            <p/>
+            <h3>Setup</h3>
+            First, install Express as a dependency with NPM.
+            <br />
+            <br />
+            <i>Terminal</i>
+            <pre class="language-none">
+    <code class="">
+        npm install express --save
+    </code></pre>
+            <br />
+            <br />
+            Then create the app.js file
+            <br />
+            <br />
+            <i>app.js</i>
+            <pre class="line-numbers language-javascript">
+    <code class="">const express = require('express');
+    const app = express();
+
+    app.use(express.json())
+    app.use(express.urlencoded({ extended: true }));
+
+    app.listen(3000, () => {
+        console.clear();
+        console.log(`Listening on ${3000}...`);
+    });</code></pre>
+            <br />
+            <br />
+            </p>
+            <h3>Resource / Collection</h3>
+            <p>
+                The collection of resources for this project will be animes
+                We will also need an index, to keep track of how many animes have
+                been inserted.
+                <br />
+                <br />
+                <i>app.js</i>
+            <pre class="line-numbers language-javascript" data-start="3">
+    <code class="">...
+        let index = 0;
+        const anime = { };
+    ...</code></pre>
+            <br />
+            <br />
+            Note that the collection is done as an object, not an array.
+
+            An array could be used, but it's easier to create some of the methods
+            with objects.
+            <br />
+            <br />
+            </p>
+            <h3>Endpoints</h3>
+            <p>
+            <br />
+            <br />
+            The app needs some endpoints, so it can respond to requests.
+            <i>app.js</i>
+            <pre class="line-numbers language-javascript" data-start="5">
+    <code class="">...
+    app.get('/anime', (req, res) => {
+      // Fetch all anime
+    })
+
+    app.get('/anime/:id', (req, res) => {
+      // Fetch an anime by id
+    })
+
+    app.post('/anime', (req, res) => {
+      // Insert an anime
+    })
+
+    app.put('/anime/:id', (req, res) => {
+      // Update an anime
+    })
+
+    app.delete('/anime/:id', (req, res) => {
+      // Delete an anime
+    })
+    ...</code></pre>
+            <br />
+            <br />
+            Let's implement one at a time, starting with POST. (If we can't insert, it's difficult to test)
+            <br />
+            <br />
+            <i>app.js</i>
+            <pre class="line-numbers language-javascript" data-start="10">
+    <code class="">...
+    app.post('/anime', (req, res) => {
+        const { title, main_character, mc_alias, release } = req.body;
+        const new_anime = { id: index, title, main_character, mc_alias, release };
+
+        anime[index++] = new_anime;
+
+        res.status(201).json(new_anime);
+    })
+    ...</code></pre>
+            <br />
+            <br />
+            Before we can test the endpoint, we need to implement a way to get the anime
+            <br />
+            <br />
+            <i>app.js</i>
+            <pre class="line-numbers language-javascript" data-start="6">
+    <code class="">...
+    app.get('/anime', (req, res) => {
+        res.send(200).json(anime)
+    })
+    ...</code></pre>
+            <br />
+            <br />
+            Perfect, now we start the server and send a POST request to <code class="language-none">localhost:3000/anime</code>
+            <br />
+            <br />
+            <i>POST Body</i>
+            <pre class="line-numbers language-json">
+    <code class="">{
+        "title": "One Punch Man",
+        "main_character": "Saitama",
+        "mc_alias": "One Punch Man",
+        "release": 2015
+    }</code></pre>
+            <br />
+            <br />
+            We get back the created anime, but is it stored in the 'anime' object?
+            <br />
+            <br />
+            <i>GET Request</i>
+            <pre class="language-none">
+    <code class="">GET localhost:3000/anime
+    -------------
+    {
+        "0": {
+            "id": 0,
+            "title": "One Punch Man",
+            "main_character": "Saitama",
+            "mc_alias": "One Punch Man",
+            "release": 2015
+        }
+    }</code></pre>
+            Yes! Now we need to implement getting by ID, updating and deleting
+            <br />
+            <br />
+            <i>app.js</i>
+            <pre class="line-numbers language-javascript" data-start="6">
+    <code class="">...
+    app.get('/anime', (req, res) => {
+      res.status(200).json(anime)
+    })
+
+    app.get('/anime/:id', (req, res) => {
+      const found = anime[req.params.id];
+
+      if (found) {
+        return res.status(200).json(found);
+      }
+      return res.status(404).send();
+    })
+
+    app.post('/anime', (req, res) => {
+      const { title, main_character, mc_alias, release } = req.body;
+      const new_anime = { id: index, title, main_character, mc_alias, release };
+
+      anime[index++] = new_anime;
+
+      res.status(201).json(new_anime);
+    })
+
+    app.put('/anime/:id', (req, res) => {
+      const found = anime[req.params.id];
+      const { title, main_character, mc_alias, release } = req.body;
+      if (!found) {
+        return res.status(404).send();
+      }
+
+      const updated = {...found, ...req.body, id: found.id}
+
+      anime[req.params.id] = updated;
+      return res.status(201).send(updated);
+    })
+
+    app.delete('/anime/:id', (req, res) => {
+      const found = anime[req.params.id];
+
+      if (!found) {
+        return res.status(404).send();
+      }
+
+      delete anime[req.params.id];
+
+      return res.status(200).send();
+    })
+    ...</code></pre>
+            <br />
+            <br />
+            Now if we send the original requests again, then a PUT request
+            <br />
+            <br />
+            <i>PUT Body</i>
+            <pre class="line-numbers language-json">
+    <code class="">{
+        "mc_alias": "Caped Baldy",
+    }</code></pre>
+            <br />
+            <br />
+            <br />
+            <i>GET Request</i>
+            <pre class="language-none">
+    <code class="">GET localhost:3000/anime
+    -------------
+    {
+        "0": {
+            "id": 0,
+            "title": "One Punch Man",
+            "main_character": "Saitama",
+            "mc_alias": "Caped Baldy",
+            "release": 2015
+        }
+    }</code></pre>
+            <br />
+            <br />
+            If we send a DELETE request, then a GET request, we get nothing back.
+            <br />
+            <br />
+            <pre class="language-none">
+    <code class="">GET localhost:3000/anime
+    -------------</code></pre>
+            <br />
+            <br />
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

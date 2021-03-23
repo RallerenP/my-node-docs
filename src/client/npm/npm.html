@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="/css/prism.css">
-    <title>NodeJS | What is NodeJS?</title>
+    <title>NodeJS | NPM</title>
     <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-monaco-editor@1/index.js"></script>
 
     <script src="https://kit.fontawesome.com/7bc581f92a.js" crossorigin="anonymous"></script>
     <script src="/dependencies/prism.js"></script>
     <script type="module" src="/js/sidebar.js"></script>
-    <link rel="stylesheet" href="/css/tailwind.css">
 </head>
 <body class="flex w-screen h-screen flex-col overflow-y-hidden">
 <div id="appbar" class="flex bg-pink-400 h-16 flex-shrink-0">
@@ -115,49 +114,90 @@
     <div class="flex-grow h-full overflow-y-scroll p-8">
         <div id="content" class="h-full w-full">
             <h1>
-                What is NodeJS?
+                NPM
             </h1>
+            <h3>What is NPM?</h3>
             <br />
             <p>
-                Simply put, NodeJS is a way to run JavaScript outside the context of a browser.
+                A major part of the <a href="/nodejs/what-is-node">Node</a> ecosystem, NPM (Node Package Manager) was created as a way to share code among developers.
                 <br />
                 <br />
-                Node runs on the V8 JavaScript (and WebAssembly) engine created by Google, which implements ECMAScript, a JavaScript standard.
+                There's no need to re-invent the wheel every time you need to do something. Instead, use a library or dependency which can do the heavy lifting,
+                leaving you to focus on the problem specific to your project.
+                <br />
+                <br />
+                NPM is here to help you accomplish this. It helps with managing dependencies, called 'packages', for your project.
                 <br />
                 <br />
             </p>
-            <h3>How to use NodeJS</h3>
+            <h3>How does NPM work?</h3>
             <p>
-                The simplest way to use Node, is to create a JavaScript file, and run it with the node command.
+                To keep track of your dependencies, NPM makes use of a <i>package.json</i> file in your project.
                 <br />
                 <br />
-                <i>greeting.js</i>
-                <pre class="bg-gray-800">
-    <code class="line-numbers language-javascript">
-    console.log("Hello World!")
-    </code>
-                </pre>
+                <a href="/nodejs/package-json">Read more about package.json.</a>
                 <br />
-                <pre class="bg-gray-800">
-    <code class="language-shell">
-    $: node greeting.js
-    #Out: Hello World
-    </code>
-                </pre>
                 <br />
-                Running node without giving any parameters, will enter you into the Node REPL, where you can execute JavaScript line-by-line
-            <pre class="bg-gray-800">
-    <code class="language-shell">
-    $: node
-    > console.log("Hello World")
-    Hello World
-    </code>
-                </pre>
+                Simply, when you run <code class="language-shell">npm install</code> NPM will read the contents of the package.json, and install the packages
+                from the <code class="language-json">"dependencies": ...</code> and <code class="language-json">"devDependencies": ...</code> fields into a
+                <code>node_modules</code> folder in your project. These modules can themselves contain <code>package.json</code> files, which NPM will resolve
+                and install if needed.
             </p>
-
+            <br />
+            <br />
+            <h3>Installing with NPM</h3>
+            <br />
+            <br />
+            <p>
+                NPM can also be used to install new dependencies automatically
+                <br>
+                <pre>
+    <code class="language-shell">
+        npm -i package-name1 package-name2 --save
+    </code>
+                </pre>
+            <br />
+            <br />
+            If --save-dev is used instead of --save, the packages will be installed as dev-dependencies.
+            </p>
+            <h3>Runnings scripts with NPM</h3>
+            <p>
+                The NPM command can also run scripts from the <code>scripts</code> field in <i>package.json</i>
+                <br />
+                <br />
+                <i>app.js</i>
+                <pre>
+    <code class="language-javascript">
+        console.log("Hello World");
+    </code>
+                </pre>
+                <br />
+                <br />
+                <i>package.json</i>
+                <pre>
+    <code class="language-json">
+        ...
+        scripts: {
+            "start": "node app.js"
+        },
+        ...
+    </code>
+                </pre>
+                <br />
+                <br />
+                <pre>
+    <code class="language-json">
+        npm run start
+        # Out: Hello World
+    </code>
+                </pre>
+                <br />
+                <br />
+            </p>
+            <br />
+            <br />
         </div>
     </div>
-
 </div>
 </body>
 </html>

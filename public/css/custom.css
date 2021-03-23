@@ -1,0 +1,32 @@
+h1 {
+    @apply text-3xl
+}
+
+h2 {
+    @apply text-2xl
+}
+
+h3 {
+    @apply text-xl
+}
+
+h4 {
+    @apply text-md
+}
+
+#sidebar > div > div:not(:first-child) {
+    height: 0px;
+    overflow: hidden;
+}
+
+#sidebar > div.open > div:not(:first-child) {
+    height: 4rem;
+}
+
+#sidebar:not(:hover) > div > div:not(:first-child) {
+    height: 0px;
+}
+
+#content a {
+    color: #6196cc;
+}

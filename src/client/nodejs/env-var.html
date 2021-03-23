@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="/css/prism.css">
-    <title>NodeJS | What is NodeJS?</title>
+    <title>NodeJS | Environment Variables</title>
     <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-monaco-editor@1/index.js"></script>
 
     <script src="https://kit.fontawesome.com/7bc581f92a.js" crossorigin="anonymous"></script>
     <script src="/dependencies/prism.js"></script>
     <script type="module" src="/js/sidebar.js"></script>
-    <link rel="stylesheet" href="/css/tailwind.css">
 </head>
 <body class="flex w-screen h-screen flex-col overflow-y-hidden">
 <div id="appbar" class="flex bg-pink-400 h-16 flex-shrink-0">
@@ -112,52 +111,72 @@
             </div>
         </div>
     </nav>
-    <div class="flex-grow h-full overflow-y-scroll p-8">
-        <div id="content" class="h-full w-full">
+    <div class="flex-grow h-full overflow-y-scroll">
+        <div id="content" class="w-full m-8">
             <h1>
-                What is NodeJS?
+                Environment Variables
             </h1>
             <br />
+            <br />
             <p>
-                Simply put, NodeJS is a way to run JavaScript outside the context of a browser.
+                NodeJS can access environment variables for the process.
                 <br />
                 <br />
-                Node runs on the V8 JavaScript (and WebAssembly) engine created by Google, which implements ECMAScript, a JavaScript standard.
+                To access a variable in your project,
+                <br />
+                <br />
+                <i>app.js</i>
+            <pre class="line-numbers language-javascript">
+    <code class="">...
+    const foo = process.env.VARIABLE_NAME;
+    ...</code></pre>
+                <br />
+                <br />
+                This could be used for many purposes, for example setting different ports for
+                the development environment and productions environment.
+                <br />
+                <br />
+            <i>app.js</i>
+            <pre class="line-numbers language-javascript">
+    <code class="">...
+    const PORT = process.env.PORT || 80;
+    //...
+    app.listen(PORT, () => {
+        console.clear();
+        console.log(`Listening on ${PORT}...`);
+    });
+    ...</code></pre>
                 <br />
                 <br />
             </p>
-            <h3>How to use NodeJS</h3>
+            <h3>cross-env</h3>
             <p>
-                The simplest way to use Node, is to create a JavaScript file, and run it with the node command.
+                An easy way to do this, is to install the <code class="language-none">cross-env</code> NPM package.
                 <br />
                 <br />
-                <i>greeting.js</i>
-                <pre class="bg-gray-800">
-    <code class="line-numbers language-javascript">
-    console.log("Hello World!")
-    </code>
-                </pre>
+                <i>Terminal</i>
+            <pre class="language-none">
+    <code class="">
+        npm install cross-env --save-dev
+    </code></pre>
                 <br />
-                <pre class="bg-gray-800">
-    <code class="language-shell">
-    $: node greeting.js
-    #Out: Hello World
-    </code>
-                </pre>
                 <br />
-                Running node without giving any parameters, will enter you into the Node REPL, where you can execute JavaScript line-by-line
-            <pre class="bg-gray-800">
-    <code class="language-shell">
-    $: node
-    > console.log("Hello World")
-    Hello World
-    </code>
-                </pre>
+                Cross-env is a tool that can set environment variables across different Operating Systems.
+                <br />
+                <br />
+                cross-env is run either in the terminal or as a script with
+                <br />
+                <br />
+            <i>Terminal</i>
+            <pre class="language-none">
+    <code class="">
+        cross-env KEY=VALUE [command]
+    </code></pre>
+                <br />
+                <br />
             </p>
-
         </div>
     </div>
-
 </div>
 </body>
 </html>
